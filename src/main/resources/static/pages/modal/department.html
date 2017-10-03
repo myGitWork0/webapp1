@@ -1,0 +1,50 @@
+<div>
+
+    <div class="modal-header">
+        <h3 class="modal-title pull-left" ng-if="action=='add'">Add Department</h3>
+
+        <h3 class="modal-title pull-left" ng-if="action=='edit'">Edit Department</h3>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label for="group_name">Short Code</label>
+                        <input type="text" class="form-control" placeholder="Dept Code"
+                               ng-model="submitData.shortCode"/>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" placeholder="Dept Name"
+                               ng-model="submitData.name">
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="type">Address</label>
+                        <textarea class="form-control" placeholder="Address" ng-model="submitData.address"></textarea>
+
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="type">Details</label>
+                        <textarea class="form-control" placeholder="Details" ng-model="submitData.details"></textarea>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-trans btn-default btn-raised" ng-click="cancel()">Cancel</button>
+    <button class="btn btn-raised btn-primary" ng-hide="action == 'view' || action == 'viewothers'" ng-click="ok()">
+        Save
+    </button>
+</div>
+</div>

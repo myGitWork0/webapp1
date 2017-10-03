@@ -1,0 +1,307 @@
+<<<<<<< HEAD
+<div class="container">
+<div class="row mt-10 invoice-field clearfix">
+  <div class="col-xs-6">
+  	<label>Waybill Number</label>
+  	<div class="field-value">{{data.waybillNumber}}</div>
+  </div>
+  <div class="col-xs-6">
+  	<label>Date</label>
+  	<div class="field-value">{{data.date | date}}</div>
+  </div>
+</div>
+<div class="row mt-10 invoice-field clearfix">
+  <div class="col-xs-6">
+  	<label>From Department</label>
+  	<div class="field-value">{{data.fromDepartment.name}} ({{data.fromDepartment.shortCode}}) </div>
+  </div>
+  <div class="col-xs-6">
+  	<label>To Department</label>
+  	<div class="field-value">{{data.toDepartment.name}} ({{data.toDepartment.shortCode}}) </div>
+  </div>
+</div>
+
+
+<div class="row mt-10 invoice-field clearfix">
+  <div class="col-xs-6">
+  	<label>From Address</label>
+  	<div class="field-value">{{data.fromAddress}}</div>
+  </div>
+  <div class="col-xs-6">
+  	<label>To Address</label>
+  	<div class="field-value">{{data.toAddress}}</div>
+  </div>
+</div>
+
+<div class="row mt-10 invoice-field clearfix">
+  <div class="col-xs-6">
+  	<label>From-To Station</label>
+  	<div class="field-value">{{data._embedded.faremap.fromStation.stationName}}, {{data._embedded.faremap.fromStation.state}} to {{data._embedded.faremap.toStation.stationName}}, {{data._embedded.faremap.toStation.state}}</div>
+  </div>
+  <div class="col-xs-6">
+  	<label>DC Number</label>
+  	<div class="field-value">{{data.dcNumber}}</div>
+  </div>
+</div>
+
+<div class="row mt-10 invoice-field clearfix">
+  <div class="col-xs-6">
+  	<label>Goods value</label>
+  	<div class="field-value">{{data.goodsValue}}</div>
+  </div>
+  <div class="col-xs-6">
+  	<label>Package Count</label>
+  	<div class="field-value">{{data.packageCount}}</div>
+  </div>
+</div>
+
+<div class="row mt-10 invoice-field clearfix">
+  <div class="col-xs-6">
+  	<label>Weight (Quintal)</label>
+  	<div class="field-value">{{(data.weight)/100}}</div>
+  </div>
+  <div class="col-xs-6">
+  	<label>Freight</label>
+  	<div class="field-value">{{data.freight}}</div>
+  </div>
+</div>
+
+<div class="row mt-10">
+  <div class="col-md-12">
+  	<label>Description</label>
+  	<div class="field-value">{{data.description}}</div>
+  </div>
+</div>
+
+
+<div class="row mt-10 ">
+  <div class="col-md-12 charges-header">
+  	Charges
+  </div>
+</div>
+
+<div class="row mt-10">
+  <div class="clear">
+  	<div class="col-md-3">
+  		<label>Value Surcharge</label>
+  	</div>
+  	<div class="col-md-3">
+  		<div class="field-value price">{{data.valueSurcharge}}</div>
+  	</div>
+  </div>
+  <div class="clear">
+	  <div class="col-md-3">
+	  	<label>Door Delivery Charges</label>
+	  </div>
+  	  <div class="col-md-3">
+	  	<div class="field-value price">{{data.doordelCharges}}</div>
+	  </div>
+  </div>
+
+  <div class="clear">
+	  <div class="col-md-3">
+	  	<label>Article Charges</label>
+	  	</div>
+  	  <div class="col-md-3">
+	  	<div class="field-value price">{{data.articleCharges}}</div>
+	  </div>
+ </div>
+ <div class="clear">
+	  <div class="col-md-3">
+	  	<label>Stat Charges</label>
+	  </div>
+  	  <div class="col-md-3">	
+	  	<div class="field-value price">{{data.statCharges}}</div>
+	  </div>
+  </div>
+
+  <div class="clear">
+	  <div class="col-md-3">
+	  	<label>Handling Charges</label>
+	  	</div>
+  	  	<div class="col-md-3">
+	  	<div class="field-value price">{{data.handlingCharges}}</div>
+	  </div>
+  </div>
+  <div class="clear">
+	  <div class="col-md-3">
+	  	<label>GST</label>
+	  	</div>
+  	  	<div class="col-md-3">
+	  	<div class="field-value price">{{data.total*0.05}}</div>
+	  </div>
+  </div>
+	<div class="clear"> 
+		<div class="col-md-3">
+		<label>Other Charges</label>
+		</div>
+  	  	<div class="col-md-3">
+		<div class="field-value price">{{data.otherCharges}}</div>
+	</div>
+	</div>
+
+	<div  class="clear total clearfix">
+		<div class="col-md-3">
+	  		<label>Total</label>
+	  	</div>
+  	  	<div class="col-md-3">
+	  		<div class="field-value price">{{data.total+data.total*0.05}}</div>
+	  	</div>
+  	</div>
+</div>
+<div class="text-center mt-10 no-print">
+	<input type="button" class="btn btn-primary" value="Print" ng-click="print()" />
+</div>
+<div class="text-center mt-10">
+</div>
+</div>
+
+
+
+
+=======
+<table style="width: 100%;height:50%">
+	<tbody>
+		<tr>
+			<td>
+
+				<table style="width: 99%" border="2">
+					<tbody>
+						<tr>
+							<td style="width:13%;border-left:hidden;border-right:hidden;border-top:hidden">&nbsp;</td>
+							<td colspan="6" style="align-content: center; text-align: center; width: 70%;border-left:hidden;border-right:hidden;border-top:hidden">
+								<img alt="" src="images/vsrbanner.png" width="400px" style="text-align: center">
+								<br>
+								<b>ACCOUNTS COPY</b>
+							</td>
+							<td style="width: 15%;border-left:hidden;border-right:hidden;border-top:hidden">&nbsp;</td>
+						</tr>
+
+						<tr>
+							<td style="width:25%; border: hidden">
+								From:&nbsp;<span id="LblFrom">{{fromAddress}}</span>
+								<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="LblFrmSta">{{fromStation}}</span>
+							</td>
+							<td colspan="3" style="align-content: center; text-align: right; width: 72%; border: hidden">
+								To:&nbsp;<span id="LblTo">{{toAddress}}</span>
+								<br>
+								<span id="LblToSat">{{toStation}}</span>
+
+							</td>
+							<td colspan="3" style="align-content: center; text-align: center; width: 72%; border: hidden">
+								&nbsp;</td>
+							<td style="width: 35%; border: hidden">
+								Way B.No: <span id="LblWayBno" style="font-size: medium">{{waybillNumber}}</span>
+								<br>
+
+							</td>
+						</tr>
+
+						<tr>
+							<td style="width:20%; border: hidden">
+								DC No:&nbsp;<span id="LbldcNumber">{{dcNumber}}</span>
+							</td>
+							<td colspan="3" style="align-content: center; text-align: right; width: 72%; border: hidden">
+								DEPT No:&nbsp;<span id="LblDept">{{depNumber}}</span></td>
+							<td colspan="3" style="align-content: center; text-align: center; width: 72%; border: hidden">
+								&nbsp;</td>
+							<td style="width: 13%; border: hidden">
+								Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="LblDate">{{date}}</span></td>
+						</tr>
+
+						<tr>
+							<td style="width:13%; text-align: center">No Of Articals</td>
+							<td style="width:37%; text-align: center" colspan="2">Description
+								<br> (Said to Conatain)</td>
+							<td style="width:21%; text-align: center" colspan="2">Weight
+								<br> Qs.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Quintal
+							</td>
+							<td style="width:13%; text-align: center" colspan="2">Freight Rs.</td>
+							<td style="width: 15%; text-align: center">Others</td>
+						</tr>
+						<tr>
+							<td rowspan="2" style="text-align:center">
+								<span id="LblNoof">{{noOfArticles}}</span>
+							</td>
+							<td rowspan="2" colspan="2" style="text-align:center">
+								<span id="LblDesc">{{description}}</span>
+							</td>
+							<td colspan="2" style="text-align:center">
+								<span id="LblWeight">{{weight}}</span>
+							</td>
+							<td colspan="2" style="text-align:right">
+								<span id="LblFrieght">{{freight}}</span>
+							</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								Value Surcharge
+								<br>
+								<br> Door Delivery
+								<br>
+								<br> Artical Charge
+								<br>
+								<br> Satatistics Charge
+								<br>
+								<br> Handiling Charge
+								<br>
+								<br> GST
+								<br>
+							</td>
+							<td style="text-align: left" colspan="2">&nbsp;</td>
+							<td style="text-align: right">
+								<span id="LblValuesurch">{{valueSurcharge}}</span>
+								<br>
+								<br>
+								<span id="LblDoor">{{doordelCharges}}</span>
+								<br>
+								<br>
+								<span id="LblArtch">{{articleCharges}}</span>
+								<br>
+								<br>
+								<span id="LblStatCharge">{{statisticsCharges}}</span>
+								<br>
+								<br>
+								<span id="LblHand">{{handlingCharges}}</span>
+								<br>
+								<br>
+								<span id="LblGST">{{(freight+valueSurcharge+doordelCharges+articleCharges+statisticsCharges+handlingCharges)*0.05}}</span>
+							</td>
+						</tr>
+						<tr>
+							<td>Value Rs.</td>
+							<td colspan="2">
+								<span id="LblValue">{{goodsValue}}</span>
+							</td>
+							<td colspan="2">Total</td>
+							<td colspan="2" style="text-align:right">
+								<span id="LblGarndTotal">{{freight+valueSurcharge+doordelCharges+articleCharges+statisticsCharges+handlingCharges+(freight+valueSurcharge+doordelCharges+articleCharges+statisticsCharges+handlingCharges)*0.05}}</span>
+							</td>
+							<td style="text-align:right">
+								<span id="LblOtherTotal">{{valueSurcharge+doordelCharges+articleCharges+statisticsCharges+handlingCharges}}</span>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="8" style="border: hidden">Note:The Consignor admits that the conditions mentioned overleaf of the consignee copy of the goods consignment note
+								and agree to same.
+
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2" style="text-align: left; border: hidden">
+								<br>Date Of Arrival:</td>
+							<td colspan="4" style="text-align: center; border: hidden">
+								<br>Date Of Delivery:</td>
+							<td colspan="2" style="text-align: right; border: hidden">FOR VSR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<br>PAID/ON-A/C:</td>
+						</tr>
+					</tbody>
+				</table>
+
+			</td>
+		</tr>
+
+	</tbody>
+</table>
+>>>>>>> d3930d5ddb4089c0b02f8f917e6409c2310168cb

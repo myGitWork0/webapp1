@@ -1,0 +1,91 @@
+<div><span class="page-header">Invoices</span>
+    <a href="javascript:void(0)" class="" ng-click="addEdit('add', '-1')"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add</a>
+
+    <a href="javascript:void(0);" class="pl-10"><span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+        Delete</a>
+</div>
+
+
+<div class="table-responsive">
+	<table class="table" ng-table="tableParams">
+		<thead>
+		<tr>
+			<th width="20"><input type="checkbox"/></th>
+			<th class="sortable" ng-class="{
+                        'sort-asc': tableParams.isSortBy('waybillNumber', 'asc'),
+                        'sort-desc': tableParams.isSortBy('waybillNumber', 'desc')
+                    }"
+				ng-click="tableParams.sorting({'waybillNumber' : tableParams.isSortBy('waybillNumber', 'asc') ? 'desc' : 'asc'})">
+				Waybill#
+			</th>
+			<th class="sortable" ng-class="{
+                        'sort-asc': tableParams.isSortBy('date', 'asc'),
+                        'sort-desc': tableParams.isSortBy('date', 'desc')
+                    }"
+				ng-click="tableParams.sorting({'date' : tableParams.isSortBy('date', 'asc') ? 'desc' : 'asc'})">Date
+			</th>
+			<th class="sortable" ng-class="{
+                        'sort-asc': tableParams.isSortBy('fromDepartment.name', 'asc'),
+                        'sort-desc': tableParams.isSortBy('fromDepartment.name', 'desc')
+                    }"
+				ng-click="tableParams.sorting({'fromDepartment.name' : tableParams.isSortBy('fromDepartment.name', 'asc') ? 'desc' : 'asc'})">
+				FromDept
+			</th>
+			<th class="sortable" ng-class="{
+                        'sort-asc': tableParams.isSortBy('toDepartment.name', 'asc'),
+                        'sort-desc': tableParams.isSortBy('toDepartment.name', 'desc')
+                    }"
+				ng-click="tableParams.sorting({'toDepartment.name' : tableParams.isSortBy('toDepartment.name', 'asc') ? 'desc' : 'asc'})">
+				ToDept
+			</th>
+			<th class="sortable" ng-class="{
+                        'sort-asc': tableParams.isSortBy('_embedded.faremap.fromStation.stationName', 'asc'),
+                        'sort-desc': tableParams.isSortBy('_embedded.faremap.fromStation.stationName', 'desc')
+                    }"
+				ng-click="tableParams.sorting({'_embedded.faremap.fromStation.stationName' : tableParams.isSortBy('_embedded.faremap.fromStation.stationName', 'asc') ? 'desc' : 'asc'})">
+				FromStn
+			</th>
+			<th class="sortable" ng-class="{
+                        'sort-asc': tableParams.isSortBy('_embedded.faremap.toStation.stationName', 'asc'),
+                        'sort-desc': tableParams.isSortBy('_embedded.faremap.toStation.stationName', 'desc')
+                    }"
+				ng-click="tableParams.sorting({'_embedded.faremap.toStation.stationName' : tableParams.isSortBy('_embedded.faremap.toStation.stationName', 'asc') ? 'desc' : 'asc'})">
+				ToStn
+			</th>
+			<th class="sortable" ng-class="{
+                        'sort-asc': tableParams.isSortBy('dcNumber', 'asc'),
+                        'sort-desc': tableParams.isSortBy('dcNumber', 'desc')
+                    }"
+				ng-click="tableParams.sorting({'dcNumber' : tableParams.isSortBy('dcNumber', 'asc') ? 'desc' : 'asc'})">DC#
+			</th>
+			<th class="sortable" ng-class="{
+                        'sort-asc': tableParams.isSortBy('total', 'asc'),
+                        'sort-desc': tableParams.isSortBy('total', 'desc')
+                    }"
+				ng-click="tableParams.sorting({'total' : tableParams.isSortBy('total', 'asc') ? 'desc' : 'asc'})">Total
+			</th>
+			<th>Actions</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr ng-repeat="data in $data">
+			<td><input type="checkbox"/></td>
+			<td>{{data.waybillNumber}}</td>
+			<td>{{data.date |date:"dd-MM-yyyy"}}</td>
+			<td>{{data.fromDepartment.shortCode}}</td>
+			<td>{{data.toDepartment.shortCode}}</td>
+			<td>{{data._embedded.faremap.fromStation.shortCode}}</td>
+			<td>{{data._embedded.faremap.toStation.shortCode}}</td>
+			<td>{{data.dcNumber}}</td>
+			<td>{{data.total}}</td>
+			<td>
+				<a href="javascript:void(0)" ng-click="addEdit('edit', data.id)">Edit</a>
+				|
+				<a href="javascript:void(0)" ng-click="deleteItem(data._links.self.href)">Delete</a>
+				|
+				<a href="javascript:void(0)" ng-click="printItem(data.id)">Print</a>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+</div>

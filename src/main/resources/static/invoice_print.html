@@ -1,0 +1,68 @@
+<html>
+
+<head>
+	<title>Invoice Print</title>
+</head>
+
+<body ng-app="mainApp" ng-controller="mainCtrl">
+	<div ng-include="'pages/invoice-print.html'"></div>
+</body>
+<script src="bower_components/angular/angular.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+	var app = angular.module('mainApp', []);
+	app.controller('mainCtrl', function($scope, $http, $location) {
+		var invoiceId = getQueryParams(document.location.search).invoice_id;
+		
+		$http({
+			method: 'GET',
+			url: '/invoices/' + invoiceId + "?projection=invoice_details"
+		}).then(function (response) {
+			if (response.status == '200') {
+				// Populate following from response:
+				$scope.fromAddress = response.data.fromAddress;
+				$scope.fromStation = response.data._embedded.faremap.fromStation.stationName;
+				$scope.toAddress = response.data.toAddress;
+				$scope.toStation = response.data._embedded.faremap.toStation.stationName; 
+				$scope.waybillNumber = response.data.waybillNumber;
+				$scope.dcNumber = response.data.dcNumber;
+				$scope.deptName = response.data.toDepartment.name;
+				$scope.date = response.data.date;
+				$scope.noOfArticles = response.data.packageCount;
+				$scope.description = response.data.description;
+				$scope.weight = response.data.weight;
+				$scope.freight = Math.ceil(response.data.freight*100)/100;
+				
+				$scope.valueSurcharge = Math.ceil(response.data.valueSurcharge*100)/100;
+				$scope.doordelCharges = response.data.doordelCharges;
+				$scope.articleCharges = response.data.articleCharges;
+				$scope.statisticsCharges = response.data.statCharges;
+				$scope.handlingCharges = response.data.handlingCharges;
+				$scope.gst=Math.ceil(response.data.gst*100)/100;
+				$scope.otherCharges = Math.ceil(response.data.otherCharges*100)/100;
+				$scope.total = Math.ceil(response.data.total*100)/100;
+				$scope.goodsValue = response.data.goodsValue;
+			}
+
+		}, function (response) {
+
+		});
+	});
+	
+	function getQueryParams(qs) {
+		qs = qs.split('+').join(' ');
+	
+		var params = {},
+			tokens,
+			re = /[?&]?([^=]+)=([^&]*)/g;
+	
+		while (tokens = re.exec(qs)) {
+			params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
+		}
+	
+		return params;
+	}
+
+</script>
+
+</html>

@@ -1,0 +1,53 @@
+<div><span class="page-header">Fares</span>
+    <a href="javascript:void(0)" class="" ng-click="addEdit('add', '-1')"><span class="glyphicon glyphicon-plus-sign"
+                                                                                aria-hidden="true"></span> Add</a>
+
+    <a href="javascript:void(0);" class="pl-10"><span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+        Delete</a>
+</div>
+
+
+<div class="table-responsive">
+    <table class="table" ng-table="tableParams">
+        <thead>
+        <tr>
+            <th width="20"><input type="checkbox"/></th>
+            <th class="sortable" ng-class="{
+                        'sort-asc': tableParams.isSortBy('fromStation.stationName', 'asc'),
+                        'sort-desc': tableParams.isSortBy('fromStation.stationName', 'desc')
+                    }"
+                ng-click="tableParams.sorting({'fromStation.stationName' : tableParams.isSortBy('fromStation.stationName', 'asc') ? 'desc' : 'asc'})">
+                From Station
+            </th>
+            <th class="sortable" ng-class="{
+                        'sort-asc': tableParams.isSortBy('toStation.stationName', 'asc'),
+                        'sort-desc': tableParams.isSortBy('toStation.stationName', 'desc')
+                    }"
+                ng-click="tableParams.sorting({'toStation.stationName' : tableParams.isSortBy('toStation.stationName', 'asc') ? 'desc' : 'asc'})">
+                To Station
+            </th>
+            <th class="sortable" ng-class="{
+                        'sort-asc': tableParams.isSortBy('fare', 'asc'),
+                        'sort-desc': tableParams.isSortBy('fare', 'desc')
+                    }"
+                ng-click="tableParams.sorting({'fare' : tableParams.isSortBy('fare', 'asc') ? 'desc' : 'asc'})">Fare
+            </th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="data in $data">
+            <td><input type="checkbox"/></td>
+            <td>{{data.fromStation.stationName}} ({{data.fromStation.shortCode}})</td>
+            <td>{{data.toStation.stationName}} ({{data.toStation.shortCode}})</td>
+            <td>Rs. {{data.fare}}/-</td>
+            <td>
+                <a href="javascript:void(0)" ng-click="addEdit('edit', data.id)">Edit</a>
+                |
+                <a href="javascript:void(0)" ng-click="deleteItem(data._links.self.href)">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+

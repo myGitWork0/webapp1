@@ -1,0 +1,62 @@
+<div><span class="page-header">Departments</span>
+    <a href="javascript:void(0)" ng-click="addEdit('add', '-1')" class=""><span class="glyphicon glyphicon-plus-sign"
+                                                                                aria-hidden="true"></span> Add</a>
+
+    <a href="javascript:void(0);" class="pl-10"><span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+        Delete</a>
+</div>
+
+<div class="table-responsive">
+    <table class="table" ng-table="tableParams">
+        <thead>
+        <tr>
+            <th width="20"><input type="checkbox"/></th>
+            <th class="sortable" ng-class="{
+                        'sort-asc': tableParams.isSortBy('shortCode', 'asc'),
+                        'sort-desc': tableParams.isSortBy('shortCode', 'desc')
+                    }"
+                ng-click="tableParams.sorting({'shortCode' : tableParams.isSortBy('shortCode', 'asc') ? 'desc' : 'asc'})">
+                Dept Code
+            </th>
+            <th class="sortable" ng-class="{
+                        'sort-asc': tableParams.isSortBy('name', 'asc'),
+                        'sort-desc': tableParams.isSortBy('name', 'desc')
+                    }"
+                ng-click="tableParams.sorting({'name' : tableParams.isSortBy('name', 'asc') ? 'desc' : 'asc'})">Dept
+                Name
+            </th>
+            <th class="sortable" ng-class="{
+                        'sort-asc': tableParams.isSortBy('address', 'asc'),
+                        'sort-desc': tableParams.isSortBy('address', 'desc')
+                    }"
+                ng-click="tableParams.sorting({'address' : tableParams.isSortBy('address', 'asc') ? 'desc' : 'asc'})">
+                Address
+            </th>
+            <th class="sortable" ng-class="{
+                        'sort-asc': tableParams.isSortBy('details', 'asc'),
+                        'sort-desc': tableParams.isSortBy('details', 'desc')
+                    }"
+                ng-click="tableParams.sorting({'details' : tableParams.isSortBy('details', 'asc') ? 'desc' : 'asc'})">
+                Other details
+            </th>
+
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="data in $data">
+            <td><input type="checkbox"/></td>
+            <td>{{data.shortCode}}</td>
+            <td>{{data.name}}</td>
+            <td>{{data.address}}</td>
+            <td>{{data.details}}</td>
+            <td>
+                <a href="javascript:void(0)" ng-click="addEdit('edit', data.id)">Edit</a>
+                |
+                <a href="javascript:void(0)" ng-click="deleteItem(data._links.self.href)">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+

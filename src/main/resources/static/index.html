@@ -1,0 +1,45 @@
+<html>
+<head>
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" type="text/css" rel="stylesheet"></link>
+    <link href="bower_components/angular-bootstrap/ui-bootstrap-csp.css" type="text/css" rel="stylesheet"></link>
+    <link href="bower_components/ng-table/dist/ng-table.min.css" type="text/css" rel="stylesheet"></link>
+    <link href="css/custom.css" type="text/css" rel="stylesheet"></link>
+</head>
+<body ng-app="app">
+<nav class="navbar navbar-default" ng-controller="nav-ctrl">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand logo" href="#"><img src='images/vsr-logo.png'/></a>
+        </div>
+        <div ng-if="$route.current.activetab != 'print'">
+            <ul class="nav navbar-nav pull-right top-links">
+                <li ng-class="{ active: $route.current.activetab == 'stations'}"><a href="#/stations">Stations</a></li>
+                <li ng-class="{ active: $route.current.activetab == 'departments'}"><a
+                        href="#/departments">Departments</a></li>
+                <li ng-class="{ active: $route.current.activetab == 'fares'}"><a href="#/fares">Fares</a></li>
+                <li ng-class="{ active: $route.current.activetab == 'invoices'}"><a href="#/invoices">Invoices</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div ng-view class="container-fluid">
+</div>
+</body>
+<script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="bower_components/angular/angular.js" type="text/javascript"></script>
+<script src="bower_components/angular-route/angular-route.min.js" type="text/javascript"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap.min.js" type="text/javascript"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="bower_components/ng-table/dist/ng-table.min.js" type="text/javascript"></script>
+<script src="scripts/app.js" type="text/javascript"></script>
+<script src="scripts/settings.js" type="text/javascript"></script>
+<script src="scripts/services.js" type="text/javascript"></script>
+<script src="scripts/controllers/nav-ctrl.js" type="text/javascript"></script>
+<script src="scripts/controllers/station-ctrl.js" type="text/javascript"></script>
+<script src="scripts/controllers/department-ctrl.js" type="text/javascript"></script>
+<script src="scripts/controllers/invoice-ctrl.js" type="text/javascript"></script>
+<script src="scripts/controllers/fares-ctrl.js" type="text/javascript"></script>
+<script src="scripts/controllers/invoice-print-ctrl.js" type="text/javascript"></script>
+
+</html>

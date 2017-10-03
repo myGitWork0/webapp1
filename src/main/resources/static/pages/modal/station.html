@@ -1,0 +1,63 @@
+<div>
+    <div class="modal-header">
+        <h3 class="modal-title pull-left" ng-if="action=='add'">Add Station</h3>
+
+        <h3 class="modal-title pull-left" ng-if="action=='edit'">Edit Station</h3>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label for="name">Station Name</label>
+                        <input type="text" class="form-control"
+                               placeholder="Station Name"
+                               ng-model="submitData.stationName"
+                                >
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label for="group_name">Short Code</label>
+                        <input type="text"
+                               class="form-control"
+                               placeholder="Short Name"
+                               ng-model="submitData.shortCode"/>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label for="type">District</label>
+                        <input type="text"
+                               class="form-control"
+                               placeholder="District"
+                               ng-model="submitData.district"/>
+
+                        <div class="select-label">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label for="type">State</label>
+                        <input type="text"
+                               class="form-control"
+                               placeholder="State"
+                               ng-model="submitData.state"/>
+
+                        <div class="select-label">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-trans btn-default btn-raised" ng-click="cancel()">Cancel</button>
+    <button class="btn btn-raised btn-primary" ng-hide="action == 'view' || action == 'viewothers'" ng-click="ok()">
+        Save
+    </button>
+</div>
+</div>

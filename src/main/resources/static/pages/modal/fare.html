@@ -1,0 +1,49 @@
+<div>
+    <div class="modal-header">
+        <h3 class="modal-title pull-left" ng-if="action=='add'">Add Fare</h3>
+
+        <h3 class="modal-title pull-left" ng-if="action=='edit'">Edit Fare</h3>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label for="group_name">From Station</label>
+                        <select class="form-control" ng-init="submitData.fromStation.id" ng-model="submitData.fromStation">
+                            <option value="">Select</option>
+                            <option ng-repeat="station in stations" value="{{station.id}}">
+                                {{station.stationName}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label for="name">To Station</label>
+                        <select class="form-control" ng-init="submitData.toStation" ng-model="submitData.toStation">
+                            <option value="">Select</option>
+                            <option ng-repeat="station in stations" value="{{station.id}}">
+                                {{station.stationName}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label for="type">Fare</label>
+                        <input type="number" class="form-control" placeholder="Fare" ng-model="submitData.fare">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-trans btn-default btn-raised" ng-click="cancel()">Cancel</button>
+    <button class="btn btn-raised btn-primary" ng-hide="action == 'view' || action == 'viewothers'" ng-click="ok()">
+        Save
+    </button>
+</div>
+</div>
